@@ -1,5 +1,5 @@
 # deal-office
-使用electron制作的批量处理.docx和.xlsx桌面软件
+使用electron制作的批量替换.docx和.xlsx内容桌面软件
 
 ## 环境
 
