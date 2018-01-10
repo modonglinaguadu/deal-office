@@ -1,0 +1,21 @@
+{
+  "name": "deal-office",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "archiver": "^2.1.0",
+    "bluebird": "^3.5.1",
+    "ncp": "^2.0.0",
+    "unzip": "^0.1.11"
+  },
+  "devDependencies": {
+    "electron-packager": "^10.1.0"
+  },
+  "scripts": {
+    "packager": "electron-packager ./ deal-office --platform=win32 --arch=x64 --electron-version=1.4.13 --out ./outApp --version 1.0.0 --overwrite --icon=asset/image/icon.ico",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "modonglin",
+  "license": "ISC"
+}

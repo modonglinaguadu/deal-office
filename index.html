@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>deal-office</title>
+    <link rel="stylesheet" href="asset/css/reset.css">
+    <link rel="stylesheet" href="asset/css/index.css">
+</head>
+
+<body>
+    <div id="app" class="app" v-cloak>
+        <div class="left">
+            <div class="go" @click="go()">
+                运行
+            </div>
+            <div class="warn">
+                <p class="warn-title">注意事项</p>
+                <p class="warn-list">替换前内容都是以
+                    <span>$替换前</span> 的方式</p>
+                <p class="warn-list">替换前内
+                    <span>禁止使用符号</span>，最好不用中文，尽量使用英文和数字，如果出现word文件未替换的情况，可能就是替换前内容问题。可以换一个替换前内容试试</p>
+                <p class="warn-list">如果处理出现问题，可以关闭软件，重新启动软件再试试，如果还有问题，请联系作者</p>
+                <p class="warn-list">现软件仍有很多bug，出现问题请及时与作者沟通</p>
+                <p class="warn-list">该软件为非商业开源软件，如出问题，后果自负</p>
+                <p class="warn-list">该软件已开源,遵循
+                    <span>GPL-3.0
+                    </span>协议</p>
+            </div>
+            <div class="author">
+                <p class="author-name">aguadu</p>
+                <img class="author-img" src="asset/image/github.png" @click="link">
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-top">
+                <div class="left-file">
+                    <div class="left-title" id="target" @click="seleSrc('target')">{{targetSrc}}</div>
+                </div>
+                <div class="left-file">
+                    <div class="left-title" id="to" @click="seleSrc('to')">{{toSrc}}</div>
+                </div>
+            </div>
+            <div class="right-bottom">
+                <div class="table-box">
+                    <div class="right-table" v-for="(item,index) in table">
+                        <input class="table-h" type="text" v-model="item.name">
+                        <ul class="table-title">
+                            <li class="title-item item1">序列</li>
+                            <li class="title-item item2">替换前</li>
+                            <li class="title-item item2">替换后</li>
+                            <li class="title-item item3">删除</li>
+                        </ul>
+                        <div class="table-cont" v-for="(itemSon,num) in item.data">
+                            <div class="cont1">{{num}}</div>
+                            <input class="cont2" type="text" v-model="itemSon.target">
+                            <input class="cont2 cont5" type="text" v-model="itemSon.content">
+                            <button class="cont3" @click="remove(index,num)">
+
+                            </button>
+                        </div>
+                        <div class="table-add" @click="add(index)">
+
+                        </div>
+                        <button class="delete" @click="rm(index)" :disabled="table.length===1">
+
+                        </button>
+                    </div>
+                    <div class="addt" @click="addt()"></div>
+                </div>
+            </div>
+        </div>
+        <div class="mask" v-if="tipShow">
+            <div class="tip">
+                <div class="tip-title">
+                    使用office2007以上版本打开一下文件并另存为.docx/.xlsx即可转换
+                </div>
+                <ul>
+                    <li class="tip-list" v-for="item in tipCont">{{item}}</li>
+                </ul>
+                <div class="tip-close" @click="tipShow=false">
+
+                </div>
+            </div>
+        </div>
+        <div class="loading" v-if="loading">
+            <div class="loading-box">
+                <img class="loading-img" v-show="!success" src="./asset/image/loading.gif"></img>
+                <div class="loading-text">{{content}}</div>
+            </div>
+            <div v-show="success" class="success" @click="close">关闭</div>
+        </div>
+    </div>
+
+
+
+    <script src="asset/js/vue.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
