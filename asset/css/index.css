@@ -1,0 +1,462 @@
+body,
+html {
+    height: 100%;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.app {
+    height: 100%;
+    display: -webkit-flex;
+}
+
+.left {
+    width: 200px;
+    height: 100%;
+    background-color: rgb(245, 245, 245);
+    border-right: 1px solid rgb(230, 230, 230);
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+}
+
+.go {
+    display: block;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    background: rgb(255, 67, 81);
+    text-align: center;
+    line-height: 100px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-user-select: none;
+}
+
+.go:hover {
+    background: rgba(255, 67, 81, .7)
+}
+
+.go:active {
+    background: rgb(255, 67, 81);
+    color: rgb(248, 38, 56)
+}
+
+.warn {
+    width: 100%;
+    -webkit-flex: 1;
+    box-sizing: border-box;
+    padding-top: 20px;
+    cursor: default;
+}
+
+.warn-title {
+    text-align: center;
+    font-size: 13px;
+    color: rgb(129, 127, 127);
+    margin-bottom: 10px;
+}
+
+.warn-list {
+    font-size: 11px;
+    color: rgb(129, 127, 127);
+    padding-left: 15px;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.warn-list::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: rgb(129, 127, 127);
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    left: 7px;
+}
+
+.warn-list span {
+    font-weight: bold;
+    color: #f66;
+}
+
+.author {
+    width: 100%;
+    height: 76px;
+    border-top: 1px solid rgb(230, 230, 230);
+    text-align: center;
+}
+
+.author-name {
+    font-size: 12px;
+    text-align: center;
+    color: rgb(129, 127, 127);
+    padding-top: 10px;
+    padding-bottom: 5px;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+.author-img {
+    cursor: pointer;
+}
+
+.left-file {
+    height: 40px;
+}
+
+.left-title {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 30px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.left-title:hover {
+    color: rgb(80, 79, 79);
+}
+
+.left-title:hover::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 11px;
+    background: url('../image/file1.png')0px -1px;
+    background-size: 20px 20px;
+}
+
+.left-title::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 11px;
+    background: url('../image/file.png') 0px -1px;
+    background-size: 20px 20px;
+}
+
+.right {
+    -webkit-flex: 1;
+    border-left: 1px solid rgb(230, 230, 230);
+    margin-left: 10px;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+}
+
+.right-top {
+    padding-left: 20px;
+    padding-top: 10px;
+    height: 100px;
+    width: 100%;
+    color: rgb(150, 149, 149);
+    box-sizing: border-box;
+    font-size: 12px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    background-color: rgb(245, 245, 245);
+}
+
+.right-bottom {
+    -webkit-flex: 1;
+    overflow-y: scroll;
+    background: rgb(245, 245, 245);
+}
+
+.table-box {
+    width: 400px;
+    position: relative;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.addt {
+    width: 40px;
+    height: 26px;
+    position: absolute;
+    bottom: 0;
+    left: 182px;
+    background: url('../image/addt.png') no-repeat;
+    background-size: 40px auto;
+    cursor: pointer;
+}
+
+.addt:hover {
+    background: url('../image/addt1.png') no-repeat;
+    background-size: 40px auto;
+}
+
+.right-table {
+    width: 400px;
+    border: 1px solid rgb(210, 210, 210);
+    border-bottom: none;
+    margin: 20px 0 30px;
+    background: #fff;
+    position: relative;
+}
+
+.delete {
+    display: block;
+    border: none;
+    outline: none;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    right: -28px;
+    top: 1px;
+    background: url('../image/rm.png');
+    background-size: 26px auto;
+    cursor: pointer;
+}
+
+.delete:hover {
+    background: url('../image/rm1.png');
+    background-size: 26px auto;
+}
+
+.table-h {
+    display: block;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 30px;
+    color: rgb(129, 127, 127);
+    font-size: 13px;
+}
+
+.table-title {
+    border-top: 1px solid rgb(210, 210, 210);
+    border-bottom: 1px solid rgb(210, 210, 210);
+    display: -webkit-flex;
+    height: 32px;
+    color: rgb(129, 127, 127);
+    cursor: default;
+}
+
+.title-item {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 32px;
+}
+
+.item1 {
+    width: 40px;
+    border-right: 1px solid rgb(210, 210, 210);
+}
+
+.item2 {
+    -webkit-flex: 1;
+    border-right: 1px solid rgb(210, 210, 210);
+}
+
+.item3 {
+    width: 40px;
+}
+
+.table-cont {
+    border-bottom: 1px solid rgb(210, 210, 210);
+    display: -webkit-flex;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+.cont1 {
+    text-align: center;
+    width: 40px;
+    border-right: 1px solid rgb(210, 210, 210);
+    color: rgb(129, 127, 127);
+    position: relative;
+    cursor: default;
+}
+
+
+/* .cont1::before {
+    content: "$";
+    width: 20px;
+    height: 31px;
+    position: absolute;
+    line-height: 32px;
+    right: -160px;
+    top: 0;
+} */
+
+
+/* .cont1::after {
+    content: "$";
+    width: 20px;
+    height: 31px;
+    line-height: 32px;
+    position: absolute;
+    right: -21px;
+    top: 0;
+} */
+
+.cont2 {
+    display: block;
+    box-sizing: border-box;
+    width: 159px;
+    border: none;
+    outline: none;
+    border-right: 1px solid rgb(210, 210, 210);
+    color: rgb(83, 82, 82);
+    padding-left: 20px;
+    /* padding-right: 20px; */
+    box-sizing: border-box;
+}
+
+.cont5 {
+    width: 160px;
+    padding-left: 20px;
+}
+
+.cont3 {
+    display: block;
+    border: none;
+    outline: none;
+    width: 40px;
+    cursor: pointer;
+    background: url('../image/delete.png') no-repeat 10px 7px;
+    background-size: 18px auto;
+    position: relative;
+}
+
+.cont3:hover {
+    background: url('../image/delete1.png') no-repeat 10px 7px;
+    background-size: 18px auto;
+}
+
+.table-add {
+    width: 100%;
+    height: 20px;
+    border-bottom: 1px solid rgb(210, 210, 210);
+    cursor: pointer;
+    background: url('../image/add.png') no-repeat 193px 2px;
+    background-size: 16px auto;
+}
+
+.table-add:hover {
+    background: url('../image/add1.png') no-repeat 193px 4px;
+    background-size: 16px auto;
+}
+
+.mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background: rgba(0, 0, 0, .4)
+}
+
+.tip {
+    width: 500px;
+    height: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    margin: 0 auto;
+}
+
+.tip-title {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid rgb(210, 210, 210);
+    border-bottom: 1px solid rgb(210, 210, 210);
+    font-weight: bold;
+    color: rgb(129, 127, 127)
+}
+
+.tip-close {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background: url('../image/close.png');
+    background-size: 30px auto;
+    cursor: pointer;
+}
+
+.tip-list {
+    font-size: 11px;
+    color: rgb(129, 127, 127);
+    padding: 3px 4px;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #2b2c30;
+}
+
+.loading-box {
+    position: absolute;
+    width: 400px;
+    height: 265px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+.loading-img {
+    display: block;
+    margin: 0 auto;
+}
+
+.loading-text {
+    height: 40px;
+    background: #2b2c30;
+    margin: 0 auto;
+    line-height: 40px;
+    border: none;
+    outline: none;
+    text-align: right;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+.success {
+    width: 40px;
+    height: 60px;
+    position: absolute;
+    background: url('../image/close1.png') no-repeat;
+    background-size: 40px auto;
+    right: 40px;
+    top: 40px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 12px;
+    padding-top: 48px;
+    text-align: center
+}
+
+.success:hover {
+    background: url('../image/close2.png') no-repeat;
+    background-size: 40px auto;
+    color: red;
+}
