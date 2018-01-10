@@ -17,7 +17,7 @@
 
 > 打包
 
-`run npm-script packager`
+`run npm-script packager` //如果是window64位执行这个即可，如果是mac或win32等，需要修改一下package.json中配置
 
 ## 效果图
 
