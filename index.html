@@ -16,8 +16,10 @@
             </div>
             <div class="warn">
                 <p class="warn-title">注意事项</p>
-                <p class="warn-list">替换前内容都是以
-                    <span>$替换前</span> 的方式</p>
+                <p class="warn-list">表名即每组生成文件夹的名字，如果生成文件夹中已经存在同名文件夹，则无法运行，所以最好编辑一下表名，还有
+                    <span>表名禁止相同和空白
+                        <span>
+                </p>
                 <p class="warn-list">替换前内
                     <span>禁止使用符号</span>，最好不用中文，尽量使用英文和数字，如果出现word文件未替换的情况，可能就是替换前内容问题。可以换一个替换前内容试试</p>
                 <p class="warn-list">如果处理出现问题，可以关闭软件，重新启动软件再试试，如果还有问题，请联系作者</p>
@@ -68,6 +70,30 @@
                     </div>
                     <div class="addt" @click="addt()"></div>
                 </div>
+                <div class="right-bottom-tab" @click="duquShow">读取</div>
+                <div class="right-bottom-tab save" @click="inpShow = true">保存</div>
+                <transition name="fade">
+                    <div class="duqu" v-show="duquFlag">
+                        <div class="duqu-title">
+                            <div class="duqu-title-left">存档</div>
+                            <div class="duqu-title-right" @click="duquFlag = false"></div>
+                        </div>
+                        <div class="duqu-item" v-for="item in archives">
+                            <div class="duqu-item-name" @click="duqu(item)">{{item}}</div>
+                            <div class="duqu-item-del" @click="deleteSave(item)">删除</div>
+                        </div>
+                    </div>
+                </transition>
+            </div>
+            <modal :options.sync="options" @btn="answer"></modal>
+            <div class="inp-save" v-if="inpShow">
+                <div class="inp-top">
+                    <input type="text" class="inp-inp" v-model="inpCont" placeholder="请输入存档名">
+                </div>
+                <div class="modal-btn">
+                    <div class="modal-btn-item" @click="save">确定</div>
+                    <div class="modal-btn-item" @click="inpShow = false">取消</div>
+                </div>
             </div>
         </div>
         <div class="mask" v-if="tipShow">
@@ -93,8 +119,26 @@
     </div>
 
 
+    <script type="x/template" id="modal-template">
+        <div class="modal" v-if="opts.show">
+            <div class="modal-head">{{opts.title}}</div>
+            <div class="modal-cont">{{opts.content}}</div>
+            <div class="modal-btn">
+                <div class="modal-btn-item" @click="btnl">
+                    {{opts.left_btn_content}}
+                </div>
+                <div class="modal-btn-item" @click="btnr">
+                    {{opts.right_btn_content}}
+                </div>
+            </div>
+        </div>
+    </script>
+
+
 
     <script src="asset/js/vue.min.js"></script>
+
+
     <script src="app.js"></script>
 
 </body>

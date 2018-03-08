@@ -4,12 +4,56 @@ const run = require('./oper.js');
 const fs = require('fs')
 const path = require('path')
 
+
+Vue.component('modal', {
+    template: '#modal-template',
+    props: {
+        options: {
+            type: Object,
+            twoWay: true
+        }
+    },
+    data: function () {
+        return {
+            opts: this.options
+        }
+    },
+    methods: {
+        btnl() {
+            this.$emit('btn', {
+                id: 1,
+                name: this.opts.name
+            })
+            this.opts.show = false
+        },
+        btnr() {
+            this.$emit('btn', {
+                id: 0,
+                name: this.opts.name
+            })
+            this.opts.show = false
+        }
+    },
+    watch: {
+        options(val) {
+            this.opts = val
+        },
+
+        opts(val) {
+            this.$emit('update:options', val)
+        }
+    },
+    create() {
+        console.log(this.opts)
+    }
+})
+
 var app = new Vue({
     el: '#app',
     data: {
         targetSelected: false,
-        targetSrc: '点击选择目标目录',
-        toSrc: '点击选择生成目录',
+        targetSrc: '点击选择目标文件夹',
+        toSrc: '点击选择生成文件夹',
         toSelected: false,
         table: [{
             name: '表1',
@@ -23,7 +67,28 @@ var app = new Vue({
         tipCont: [],
         loading: false,
         success: false,
-        content: '处理中...'
+        content: '处理中...',
+        duquFlag: false,
+        archives: [],
+        inpShow: false,
+        inpCont: '',
+        options: {
+            show: false,
+            title: '警告',
+            name: '',
+            content: 'xxx存档已存在，是否覆盖?',
+            left_btn_content: '是',
+            right_btn_content: '否'
+        },
+        duquName: '',
+        deleteName: ''
+    },
+    directives: {
+        reflect: {
+            bind(el) {
+                console.log(el)
+            }
+        }
     },
     methods: {
         seleSrc(tar) {
@@ -33,7 +98,6 @@ var app = new Vue({
             if (!this.targetSelected || !this.toSelected) {
                 ipc.send('open-error-dialog')
             } else {
-
                 //判断目标目录中是否有表名相同的文件夹
                 var flag = true;
                 var hasSameName = true;
@@ -84,9 +148,9 @@ var app = new Vue({
 
                 if (flag && hasSameName && isSon) {
                     var _self = this;
-                    this.loading = true;
-
-                    run([this.targetSrc, this.toSrc], this.table, function () {
+                    run(function () {
+                        _self.loading = true;
+                    }, [this.targetSrc, this.toSrc], this.table, function () {
                         _self.content = "处理完成"
                         _self.success = true;
                     }, function (err) {
@@ -129,9 +193,82 @@ var app = new Vue({
         },
         link() {
             shell.openExternal('https://github.com/modonglinaguadu/deal-office');
+        },
+        duquShow() {
+            this.archives = getKeys();
+            this.duquFlag = true;
+        },
+        save() {
+            const arr = getKeys();
+            const flag = arr.findIndex((value) => value == this.inpCont);
+            if (flag == -1) {
+                localStorage.setItem(this.inpCont, JSON.stringify(this.table));
+                this.inpShow = false;
+                this.inpCont = '';
+            } else {
+                this.inpShow = false;
+                this.options.content = this.inpCont + '存档已存在，是否覆盖?';
+                this.options.show = true;
+                this.options.name = 'hasSave';
+            }
+        },
+        answer(args) {
+            // console.log(args)
+            const type = args.name;
+            const btn = args.id;
+            switch (type) {
+                case 'hasSave':
+                    if (btn == 1) {
+                        localStorage.setItem(this.inpCont, JSON.stringify(this.table));
+                        this.options.show = false;
+                        this.inpCont = '';
+                    } else if (btn == 0) {
+                        this.inpShow = true;
+                        this.options.show = false;
+                    }
+                    break;
+                case 'duqu':
+                    if (btn == 1) {
+                        this.table = JSON.parse(localStorage.getItem(this.duquName));
+                        this.options.show = false;
+                    } else if (btn == 0) {
+                        this.options.show = false;
+                    }
+                    break;
+                case 'delete':
+                    if (btn == 1) {
+                        localStorage.removeItem(this.deleteName);
+                        this.archives = getKeys();
+                        this.options.show = false;
+                    } else {
+                        this.options.show = false;
+                    }
+            }
+        },
+        duqu(name) {
+            this.options.title = "提示";
+            this.options.content = '若读取 ' + name + ' 存档，将覆盖当前编写表格,是否继续?';
+            this.options.show = true;
+            this.options.name = 'duqu';
+            this.duquName = name;
+        },
+        deleteSave(name) {
+            this.options.title = "警告";
+            this.options.content = '您是否确定删除 ' + name + ' 存档?';
+            this.options.show = true;
+            this.options.name = 'delete';
+            this.deleteName = name;
         }
+    },
+    created() {
+        this.archives = getKeys();
     }
 })
+
+function getKeys() {
+    const msg = localStorage.valueOf()
+    return Object.keys(msg);
+}
 
 ipc.on('selected-directory', function (event, path, who) {
     if (who === 'target') {

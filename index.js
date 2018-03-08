@@ -79,16 +79,16 @@ ipc.on('open-file-dialog', function (event, who) {
 
 
 ipc.on('open-error-dialog', function (event) {
-    dialog.showErrorBox('错误', '您未选择目标目录或生产目录，请选择！')
+    dialog.showErrorBox('错误', '您未选择目标文件夹或生成文件夹，请选择！')
 })
 
 ipc.on('open-error-dialog1', function (event) {
-    dialog.showErrorBox('处理失败', '请删除目标目录文件，并重新启动程序再试运行，如若失败，请联系作者或github提交issue')
+    dialog.showErrorBox('处理失败', '请删除目标文件夹文件，并重新启动程序再试运行，如若失败，请联系作者或github提交issue')
 })
 
 ipc.on('open-error-dialog2', function (event, arr) {
     var str = arr.join(',');
-    dialog.showErrorBox('错误', '目标目录中已存在 [ ' + str + ' ]文件夹,请更换表名或更换目标目录')
+    dialog.showErrorBox('错误', '目标文件夹中已存在 [ ' + str + ' ]文件夹,请更换表名或更换目标文件夹')
 })
 
 ipc.on('open-error-dialog3', function (event) {
@@ -96,7 +96,7 @@ ipc.on('open-error-dialog3', function (event) {
 })
 
 ipc.on('open-error-dialog4', function (event) {
-    dialog.showErrorBox('目录错误', '生成目录不能是目标目录的子目录或同目录')
+    dialog.showErrorBox('文件夹错误', '生成文件夹不能是目标文件夹的子文件夹或同文件夹')
 })
 
 
@@ -104,7 +104,7 @@ ipc.on('open-information-dialog', function (event, arr) {
     const options = {
         type: 'info',
         title: '警告',
-        message: '您选的目录中含有.doc或.xls文件,现系统不支持处理该类文件，您是否去修改?',
+        message: '您选的文件夹中含有.doc或.xls文件,现系统不支持处理该类文件，您是否去修改?',
         buttons: ['是,去修改', '忽略，继续执行']
     }
     dialog.showMessageBox(options, function (index) {

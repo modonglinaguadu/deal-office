@@ -155,6 +155,7 @@ html {
     margin-left: 10px;
     display: -webkit-flex;
     -webkit-flex-direction: column;
+    position: relative;
 }
 
 .right-top {
@@ -173,6 +174,123 @@ html {
     -webkit-flex: 1;
     overflow-y: scroll;
     background: rgb(245, 245, 245);
+    position: relative;
+}
+
+.right-bottom-tab {
+    position: absolute;
+    width: 16px;
+    height: 40px;
+    left: 0;
+    top: 30px;
+    border: 1px solid #fff;
+    border-left: none;
+    cursor: pointer;
+    font-size: 12px;
+    padding-left: 2px;
+    background: rgb(150, 149, 149);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #fff;
+}
+
+.right-bottom-tab:hover {
+    background: rgb(130, 130, 130);
+}
+
+.save {
+    top: 90px;
+}
+
+.duqu {
+    position: absolute;
+    z-index: 1;
+    width: 120px;
+    height: 260px;
+    border: 1px solid rgb(210, 210, 210);
+    border-left: none;
+    left: 0;
+    top: 30px;
+    background: #fff;
+    overflow-y: scroll;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all .5s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+    width: 0px;
+}
+
+.duqu-title {
+    width: 100%;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    display: -webkit-flex;
+    border-bottom: 1px solid rgb(210, 210, 210);
+    padding: 5px 0;
+    background: rgb(173, 172, 172);
+}
+
+.duqu-title-left {
+    width: 80px;
+    color: rgb(175, 174, 174);
+    font-size: 16px;
+    color: #fff;
+}
+
+.duqu-title-right {
+    -webkit-flex: 1;
+    height: 20px;
+    cursor: pointer;
+    background: url(../image/left.png) no-repeat 2px 2px;
+    background-size: 16px auto;
+}
+
+.duqu-title-right:hover {
+    background: url(../image/left1.png) no-repeat 2px 2px;
+    background-size: 16px auto;
+}
+
+.duqu-item {
+    width: 100%;
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    display: -webkit-flex;
+    border-bottom: 1px solid rgb(210, 210, 210);
+    padding: 2px 0;
+}
+
+.duqu-item-name {
+    width: 80px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    color: rgb(150, 149, 149);
+    padding-left: 2px;
+    box-sizing: border-box;
+}
+
+.duqu-item-name:hover {
+    background: rgb(210, 210, 210);
+}
+
+.duqu-item-del {
+    width: 20px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.duqu-item-del:hover {
+    color: rgb(248, 3, 3);
 }
 
 .table-box {
@@ -288,7 +406,6 @@ html {
     cursor: default;
 }
 
-
 /* .cont1::before {
     content: "$";
     width: 20px;
@@ -298,7 +415,6 @@ html {
     right: -160px;
     top: 0;
 } */
-
 
 /* .cont1::after {
     content: "$";
@@ -459,4 +575,82 @@ html {
     background: url('../image/close2.png') no-repeat;
     background-size: 40px auto;
     color: red;
+}
+
+.modal {
+    position: absolute;
+    width: 300px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    box-shadow: 4px 4px 17px #888888;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.modal-head {
+    font-size: 16px;
+    text-align: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #cecccc;
+    font-weight: bold;
+    cursor: default;
+    color: rgb(150, 149, 149)
+}
+
+.modal-cont {
+    padding: 10px;
+    font-size: 12px;
+    color: rgb(150, 149, 149)
+}
+
+.modal-btn {
+    height: 30px;
+    display: flex;
+}
+
+.modal-btn-item {
+    flex: 1;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(114, 113, 113);
+    cursor: pointer;
+}
+
+.modal-btn-item:hover {
+    background: rgb(221, 221, 221);
+}
+
+.inp-save {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    box-shadow: 4px 4px 17px #888888;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.inp-top {
+    padding: 5px 5px;
+}
+
+.inp-inp {
+    border: none;
+    border-bottom: 1px solid #cecccc;
+    padding-bottom: 5px;
+    font-size: 12px;
+    width: 200px;
+    box-sizing: border-box;
+    padding: 5px;
+    color: rgb(114, 113, 113);
+    text-align: center;
+}
+
+.inp-inp:focus {
+    border-bottom: 1px solid #4dec3f;
 }
